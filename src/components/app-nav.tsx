@@ -6,7 +6,7 @@ const items = [
   { label: "المحتوى", icon: FileText, to: "/posts" as const },
   { label: "المصادر", icon: Workflow, to: "/sources" as const },
   { label: "المنصات", icon: ChartNoAxesColumnIncreasing, to: "/connect-accounts" as const },
-  { label: "الإعدادات", icon: Settings, to: "/" as const },
+  { label: "الإعدادات", icon: Settings, to: "/settings" as const },
 ];
 
 export function AppNav({ active }: { active: string }) {

@@ -20,7 +20,8 @@ import { Button } from "@/components/ui/button";
 import { AppNav } from "@/components/app-nav";
 import { MenaFlowMark } from "@/components/menaflow-brand";
 import { SocialIcon, type SocialPlatform } from "@/components/social-icon";
-import robotImage from "@/assets/menaflow-robot.jpg";
+import robotImageAsset from "@/assets/menaflow-robot.jpg.asset.json";
+const robotImage = robotImageAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({

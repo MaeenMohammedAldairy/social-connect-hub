@@ -36,7 +36,7 @@ export function SectionPage({
     { label: "المحتوى", icon: FileText, to: "/posts" as const },
     { label: "المنتجات", icon: Share2, to: "/products" as const },
     { label: "التقارير", icon: ChartNoAxesColumnIncreasing, to: "/" as const },
-    { label: "الإعدادات", icon: Settings, to: "/" as const },
+    { label: "الإعدادات", icon: Settings, to: "/settings" as const },
   ];
   return (
     <main className="dashboard-shell" dir="rtl">

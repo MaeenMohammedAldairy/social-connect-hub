@@ -3,7 +3,8 @@ import { ChevronLeft, ChevronRight, CircleCheck, Lightbulb, Link as LinkIcon } f
 import { Button } from "@/components/ui/button";
 import { MenaFlowMark } from "@/components/menaflow-brand";
 import { SocialIcon, type SocialPlatform } from "@/components/social-icon";
-import connectionImage from "@/assets/connect-accounts.jpg";
+import connectionImageAsset from "@/assets/connect-accounts.jpg.asset.json";
+const connectionImage = connectionImageAsset.url;
 
 export const Route = createFileRoute("/connect-accounts")({
   head: () => ({

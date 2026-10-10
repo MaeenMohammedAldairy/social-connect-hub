@@ -4,9 +4,12 @@ import { Check, ChevronLeft, CircleCheck, Copy, Link as LinkIcon, ShieldCheck } 
 import { Button } from "@/components/ui/button";
 import { MenaFlowMark } from "@/components/menaflow-brand";
 import { SocialIcon, type SocialPlatform } from "@/components/social-icon";
-import instagramPhone from "@/assets/instagram-phone.jpg";
-import facebookPhone from "@/assets/facebook-phone.jpg";
-import whatsappPhone from "@/assets/whatsapp-phone.jpg";
+import instagramPhoneAsset from "@/assets/instagram-phone.jpg.asset.json";
+const instagramPhone = instagramPhoneAsset.url;
+import facebookPhoneAsset from "@/assets/facebook-phone.jpg.asset.json";
+const facebookPhone = facebookPhoneAsset.url;
+import whatsappPhoneAsset from "@/assets/whatsapp-phone.jpg.asset.json";
+const whatsappPhone = whatsappPhoneAsset.url;
 
 const platformDetails = {
   instagram: {

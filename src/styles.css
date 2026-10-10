@@ -182,12 +182,12 @@ button {
   font-family: inherit;
 }
 .dashboard-shell {
-  width: min(100% - 40px, 710px);
+  width: min(100% - 64px, 1180px);
   margin: 22px auto;
   padding: 26px 16px 0;
   background: var(--surface);
-  border-radius: 28px;
-  box-shadow: var(--dashboard-shadow);
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
 }
 .dashboard-header {
@@ -219,7 +219,7 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  box-shadow: var(--dashboard-shadow);
+  box-shadow: none;
   border: 1px solid var(--border);
 }
 .profile-mark svg {
@@ -276,8 +276,8 @@ button {
   display: flex;
   align-items: center;
   min-height: 234px;
-  background: var(--mint-surface);
-  border-radius: 18px;
+  background: transparent;
+  border-radius: 0;
   overflow: hidden;
 }
 .welcome-copy {
@@ -291,7 +291,7 @@ button {
   font-weight: 700;
   line-height: 1.6;
   margin: 0 0 4px;
-  white-space: nowrap;
+  white-space: normal;
 }
 .welcome-copy h1 bdi {
   font-family: var(--font-brand);
@@ -359,11 +359,11 @@ button {
 .stats-section,
 .platforms-section,
 .activities-section {
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  margin-top: 16px;
+  border: 0;
+  border-radius: 0;
+  margin-top: 24px;
   padding: 16px;
-  box-shadow: 0 3px 14px oklch(0.78 0.07 224 / 0.04);
+  box-shadow: none;
 }
 .stats-section {
   display: grid;
@@ -654,246 +654,7 @@ button {
   border-radius: 3px;
   background: var(--positive);
 }
-@media (max-width: 600px) {
-  .dashboard-shell {
-    width: calc(100% - 24px);
-    padding: 14px 9px 0;
-    margin: 12px auto;
-    border-radius: 22px;
-  }
-  .dashboard-header {
-    gap: 7px;
-    margin: 0 2px 12px;
-    min-height: 55px;
-  }
-  .brand-wordmark {
-    font-size: 21px;
-    gap: 3px;
-  }
-  .brand-wordmark svg {
-    width: 40px;
-    height: 29px;
-  }
-  .account-profile {
-    gap: 5px;
-  }
-  .account-profile p {
-    font-size: 10px;
-  }
-  .account-profile div > span {
-    font-size: 9px;
-  }
-  .profile-mark {
-    width: 28px;
-    height: 28px;
-  }
-  .profile-mark svg {
-    width: 21px;
-  }
-  .account-chevron {
-    width: 12px;
-  }
-  .notification-button {
-    width: 27px;
-  }
-  .notification-button svg {
-    width: 23px;
-    height: 23px;
-  }
-  .notification-count {
-    width: 15px;
-    height: 15px;
-    font-size: 9px;
-    right: -2px;
-    top: 2px;
-  }
-  .welcome-section {
-    min-height: 167px;
-    border-radius: 13px;
-  }
-  .welcome-copy {
-    width: 57%;
-    padding: 10px 9px 24px 0;
-  }
-  .welcome-copy h1 {
-    font-size: 15px;
-  }
-  .welcome-copy p {
-    font-size: 8px;
-    line-height: 2.15;
-    margin-bottom: 12px;
-  }
-  .welcome-art {
-    width: 45%;
-    height: 164px;
-    object-fit: cover;
-  }
-  .connect-button {
-    height: 34px;
-    font-size: 10px;
-    padding: 0 10px;
-    border-radius: 9px;
-    gap: 5px;
-  }
-  .connect-button svg {
-    width: 16px;
-    height: 16px;
-  }
-  .carousel-dots {
-    gap: 6px;
-    bottom: 8px;
-  }
-  .carousel-dots span {
-    width: 6px;
-    height: 6px;
-  }
-  .stats-section,
-  .platforms-section,
-  .activities-section {
-    margin-top: 11px;
-    border-radius: 10px;
-  }
-  .stats-section {
-    padding: 12px 8px 10px;
-    gap: 6px;
-  }
-  .stat-item {
-    padding: 7px 2px 5px;
-    border-radius: 7px;
-  }
-  .stat-icon {
-    width: 31px;
-    height: 31px;
-    border-radius: 10px;
-  }
-  .stat-icon svg {
-    width: 22px;
-    height: 22px;
-  }
-  .stat-item h2 {
-    font-size: 9px;
-    margin: 5px 0 1px;
-  }
-  .stat-item strong {
-    font-size: 19px;
-  }
-  .stat-growth {
-    font-size: 12px;
-    gap: 2px;
-    margin-top: 1px;
-  }
-  .stat-growth svg {
-    width: 12px;
-    height: 12px;
-  }
-  .platforms-section {
-    padding: 5px 9px 9px;
-  }
-  .section-title {
-    font-size: 15px;
-    margin-bottom: 4px;
-  }
-  .platform-grid {
-    gap: 6px;
-  }
-  .platform-item {
-    padding: 7px 3px 5px;
-    border-radius: 7px;
-  }
-  .social-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 9px;
-  }
-  .social-icon > svg {
-    width: 25px;
-    height: 25px;
-  }
-  .facebook-letter {
-    font-size: 41px;
-    transform: translateY(6px);
-  }
-  .whatsapp-symbol {
-    transform: scale(0.8);
-  }
-  .platform-item h3 {
-    font-size: 10px;
-    margin: 3px 0 2px;
-  }
-  .platform-add {
-    width: 23px;
-    height: 23px;
-  }
-  .platform-add svg {
-    width: 16px;
-    height: 16px;
-  }
-  .platform-item > span:last-child {
-    font-size: 8px;
-  }
-  .activities-section {
-    padding: 3px 7px 7px;
-  }
-  .section-heading h2 {
-    gap: 5px;
-  }
-  .section-heading h2 svg {
-    width: 16px;
-  }
-  .view-all {
-    font-size: 10px;
-    height: 28px;
-  }
-  .view-all svg {
-    width: 13px;
-  }
-  .activity-list {
-    padding: 0 5px;
-  }
-  .activity-row {
-    min-height: 40px;
-    gap: 7px;
-  }
-  .activity-row p {
-    font-size: 9px;
-  }
-  .activity-row div > span {
-    font-size: 8px;
-  }
-  .activity-row > .social-icon,
-  .activity-icon {
-    width: 23px;
-    height: 23px;
-    border-radius: 6px;
-  }
-  .activity-row .social-icon > svg {
-    width: 20px;
-    height: 20px;
-  }
-  .activity-row .whatsapp-symbol {
-    transform: scale(0.63);
-  }
-  .activity-icon svg {
-    width: 16px;
-    height: 16px;
-  }
-  .activity-row > svg {
-    width: 13px;
-  }
-  .bottom-navigation {
-    margin: 0 -9px;
-    padding: 9px 5px 6px;
-  }
-  .dashboard-nav-button {
-    height: 49px;
-    font-size: 9px;
-    gap: 2px;
-  }
-  .dashboard-nav-button svg {
-    width: 20px;
-    height: 20px;
-  }
-}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -920,12 +681,12 @@ button {
   justify-content: center;
 }
 .connection-shell {
-  width: min(100% - 40px, 710px);
+  width: min(100% - 64px, 1180px);
   margin: 14px auto;
   padding: 32px 17px 82px;
   background: var(--surface);
-  border-radius: 26px;
-  box-shadow: var(--dashboard-shadow);
+  border-radius: 0;
+  box-shadow: none;
   overflow: hidden;
 }
 .connection-header {
@@ -1004,7 +765,7 @@ button {
   border: 1px solid var(--border);
   border-radius: 13px;
   padding: 17px 19px;
-  box-shadow: var(--dashboard-shadow);
+  box-shadow: none;
 }
 .connection-row-chevron {
   color: var(--muted-foreground);
@@ -1104,147 +865,18 @@ button {
   margin: 0;
   color: var(--blue);
 }
-@media (max-width: 600px) {
-  .connection-shell {
-    width: calc(100% - 24px);
-    margin: 12px auto;
-    padding: 20px 9px 44px;
-    border-radius: 22px;
-  }
-  .connection-header {
-    min-height: 42px;
-    margin-bottom: 15px;
-  }
-  .connection-wordmark {
-    font-size: 28px;
-    gap: 5px;
-  }
-  .connection-wordmark svg {
-    width: 53px;
-    height: 36px;
-  }
-  .connection-back {
-    left: 0;
-    width: 24px;
-  }
-  .connection-back svg {
-    width: 21px;
-    height: 21px;
-  }
-  .connection-intro {
-    margin: 0 -9px;
-    padding: 0 9px;
-    min-height: 151px;
-  }
-  .connection-intro-copy {
-    width: 51%;
-  }
-  .connection-intro-copy h1 {
-    font-size: 17px;
-    margin-bottom: 9px;
-    white-space: nowrap;
-  }
-  .connection-intro-copy p {
-    font-size: 10px;
-    line-height: 1.95;
-  }
-  .connection-art {
-    height: 151px;
-    width: 49%;
-  }
-  .connection-platforms {
-    margin-top: 18px;
-  }
-  .connection-platforms > h2 {
-    font-size: 15px;
-    margin-bottom: 12px;
-  }
-  .connection-platform-list {
-    gap: 13px;
-  }
-  .connection-platform-row {
-    min-height: 83px;
-    gap: 10px;
-    padding: 10px 9px;
-    border-radius: 10px;
-  }
-  .connection-row-chevron {
-    width: 10px;
-  }
-  .connection-platform-row > .social-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-  }
-  .connection-platform-row > .social-icon > svg {
-    width: 27px;
-    height: 27px;
-  }
-  .connection-platform-row .facebook-letter {
-    font-size: 47px;
-    transform: translateY(7px);
-  }
-  .connection-platform-row .whatsapp-symbol {
-    transform: scale(0.87);
-  }
-  .connection-platform-copy h3 {
-    font-size: 12px;
-    margin-bottom: 3px;
-  }
-  .connection-platform-copy p {
-    font-size: 8px;
-    line-height: 1.9;
-  }
-  .connection-account-button {
-    width: 91px;
-    height: 29px;
-    font-size: 9px;
-    padding: 0 7px;
-    gap: 6px;
-  }
-  .connection-account-button svg {
-    width: 15px;
-    height: 15px;
-  }
-  .connection-benefits {
-    margin: 25px 1px 0;
-    padding: 12px 7px 17px;
-    border-radius: 11px;
-  }
-  .connection-benefits h2 {
-    font-size: 12px;
-    gap: 6px;
-    margin-bottom: 12px;
-  }
-  .connection-benefits h2 svg {
-    width: 21px;
-    height: 21px;
-  }
-  .connection-benefit {
-    padding: 0 5px;
-    gap: 3px;
-  }
-  .connection-benefit p {
-    font-size: 8px;
-    line-height: 2;
-  }
-  .connection-benefit svg {
-    width: 10px;
-    height: 10px;
-    margin-top: 4px;
-  }
-}
+
 
 .platform-connection-shell {
   --platform-accent: var(--blue);
   --platform-tint: color-mix(in oklch, var(--blue-light) 26%, var(--surface));
   --platform-line: var(--border);
-  width: min(calc(100% - 32px), 356px);
+  width: min(calc(100% - 48px), 660px);
   margin: 16px auto;
   padding: 25px 15px 13px;
-  border-radius: 23px;
+  border-radius: 0;
   background: var(--surface);
-  box-shadow: var(--dashboard-shadow);
+  box-shadow: none;
 }
 .platform-theme-instagram {
   --platform-accent: var(--violet);
@@ -1470,16 +1102,7 @@ button {
   margin: 13px auto 0;
   mix-blend-mode: multiply;
 }
-@media (max-width: 360px) {
-  .platform-connection-shell {
-    width: calc(100% - 20px);
-    padding-right: 12px;
-    padding-left: 12px;
-  }
-  .platform-connection-intro h1 {
-    font-size: 17px;
-  }
-}
+
 
 .platform-tint-facebook { background: color-mix(in oklab, var(--card) 92%, oklch(0.6 0.18 255)); }
 .platform-tint-instagram { background: color-mix(in oklab, var(--card) 93%, oklch(0.62 0.22 350)); }

@@ -10,33 +10,219 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChatsRouteImport } from './routes/chats'
+import { Route as ConnectAccountsRouteImport } from './routes/connect-accounts'
+import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as PostsRouteImport } from './routes/posts'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as SourcesRouteImport } from './routes/sources'
+import { Route as ChatsIdRouteImport } from './routes/chats_.$id'
+import { Route as ConnectFacebookRouteImport } from './routes/connect.facebook'
+import { Route as ConnectInstagramRouteImport } from './routes/connect.instagram'
+import { Route as ConnectWhatsappRouteImport } from './routes/connect.whatsapp'
+import { Route as ManagePlatformRouteImport } from './routes/manage.$platform'
+import { Route as OrdersIdRouteImport } from './routes/orders_.$id'
+import { Route as PostsIdRouteImport } from './routes/posts_.$id'
+import { Route as ProductsIdRouteImport } from './routes/products_.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChatsRoute = ChatsRouteImport.update({
+  id: '/chats',
+  path: '/chats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectAccountsRoute = ConnectAccountsRouteImport.update({
+  id: '/connect-accounts',
+  path: '/connect-accounts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersRoute = OrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostsRoute = PostsRouteImport.update({
+  id: '/posts',
+  path: '/posts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcesRoute = SourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChatsIdRoute = ChatsIdRouteImport.update({
+  id: '/chats_/$id',
+  path: '/chats/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectFacebookRoute = ConnectFacebookRouteImport.update({
+  id: '/connect/facebook',
+  path: '/connect/facebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectInstagramRoute = ConnectInstagramRouteImport.update({
+  id: '/connect/instagram',
+  path: '/connect/instagram',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectWhatsappRoute = ConnectWhatsappRouteImport.update({
+  id: '/connect/whatsapp',
+  path: '/connect/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManagePlatformRoute = ManagePlatformRouteImport.update({
+  id: '/manage/$platform',
+  path: '/manage/$platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersIdRoute = OrdersIdRouteImport.update({
+  id: '/orders_/$id',
+  path: '/orders/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostsIdRoute = PostsIdRouteImport.update({
+  id: '/posts_/$id',
+  path: '/posts/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIdRoute = ProductsIdRouteImport.update({
+  id: '/products_/$id',
+  path: '/products/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chats': typeof ChatsRoute
+  '/connect-accounts': typeof ConnectAccountsRoute
+  '/orders': typeof OrdersRoute
+  '/posts': typeof PostsRoute
+  '/products': typeof ProductsRoute
+  '/sources': typeof SourcesRoute
+  '/chats/$id': typeof ChatsIdRoute
+  '/connect/facebook': typeof ConnectFacebookRoute
+  '/connect/instagram': typeof ConnectInstagramRoute
+  '/connect/whatsapp': typeof ConnectWhatsappRoute
+  '/manage/$platform': typeof ManagePlatformRoute
+  '/orders/$id': typeof OrdersIdRoute
+  '/posts/$id': typeof PostsIdRoute
+  '/products/$id': typeof ProductsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chats': typeof ChatsRoute
+  '/connect-accounts': typeof ConnectAccountsRoute
+  '/orders': typeof OrdersRoute
+  '/posts': typeof PostsRoute
+  '/products': typeof ProductsRoute
+  '/sources': typeof SourcesRoute
+  '/chats/$id': typeof ChatsIdRoute
+  '/connect/facebook': typeof ConnectFacebookRoute
+  '/connect/instagram': typeof ConnectInstagramRoute
+  '/connect/whatsapp': typeof ConnectWhatsappRoute
+  '/manage/$platform': typeof ManagePlatformRoute
+  '/orders/$id': typeof OrdersIdRoute
+  '/posts/$id': typeof PostsIdRoute
+  '/products/$id': typeof ProductsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chats': typeof ChatsRoute
+  '/connect-accounts': typeof ConnectAccountsRoute
+  '/orders': typeof OrdersRoute
+  '/posts': typeof PostsRoute
+  '/products': typeof ProductsRoute
+  '/sources': typeof SourcesRoute
+  '/chats_/$id': typeof ChatsIdRoute
+  '/connect/facebook': typeof ConnectFacebookRoute
+  '/connect/instagram': typeof ConnectInstagramRoute
+  '/connect/whatsapp': typeof ConnectWhatsappRoute
+  '/manage/$platform': typeof ManagePlatformRoute
+  '/orders_/$id': typeof OrdersIdRoute
+  '/posts_/$id': typeof PostsIdRoute
+  '/products_/$id': typeof ProductsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/chats'
+    | '/connect-accounts'
+    | '/orders'
+    | '/posts'
+    | '/products'
+    | '/sources'
+    | '/chats/$id'
+    | '/connect/facebook'
+    | '/connect/instagram'
+    | '/connect/whatsapp'
+    | '/manage/$platform'
+    | '/orders/$id'
+    | '/posts/$id'
+    | '/products/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/chats'
+    | '/connect-accounts'
+    | '/orders'
+    | '/posts'
+    | '/products'
+    | '/sources'
+    | '/chats/$id'
+    | '/connect/facebook'
+    | '/connect/instagram'
+    | '/connect/whatsapp'
+    | '/manage/$platform'
+    | '/orders/$id'
+    | '/posts/$id'
+    | '/products/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/chats'
+    | '/connect-accounts'
+    | '/orders'
+    | '/posts'
+    | '/products'
+    | '/sources'
+    | '/chats_/$id'
+    | '/connect/facebook'
+    | '/connect/instagram'
+    | '/connect/whatsapp'
+    | '/manage/$platform'
+    | '/orders_/$id'
+    | '/posts_/$id'
+    | '/products_/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChatsRoute: typeof ChatsRoute
+  ConnectAccountsRoute: typeof ConnectAccountsRoute
+  OrdersRoute: typeof OrdersRoute
+  PostsRoute: typeof PostsRoute
+  ProductsRoute: typeof ProductsRoute
+  SourcesRoute: typeof SourcesRoute
+  ChatsIdRoute: typeof ChatsIdRoute
+  ConnectFacebookRoute: typeof ConnectFacebookRoute
+  ConnectInstagramRoute: typeof ConnectInstagramRoute
+  ConnectWhatsappRoute: typeof ConnectWhatsappRoute
+  ManagePlatformRoute: typeof ManagePlatformRoute
+  OrdersIdRoute: typeof OrdersIdRoute
+  PostsIdRoute: typeof PostsIdRoute
+  ProductsIdRoute: typeof ProductsIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +234,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chats': {
+      id: '/chats'
+      path: '/chats'
+      fullPath: '/chats'
+      preLoaderRoute: typeof ChatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect-accounts': {
+      id: '/connect-accounts'
+      path: '/connect-accounts'
+      fullPath: '/connect-accounts'
+      preLoaderRoute: typeof ConnectAccountsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders': {
+      id: '/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts': {
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sources': {
+      id: '/sources'
+      path: '/sources'
+      fullPath: '/sources'
+      preLoaderRoute: typeof SourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chats_/$id': {
+      id: '/chats_/$id'
+      path: '/chats/$id'
+      fullPath: '/chats/$id'
+      preLoaderRoute: typeof ChatsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/facebook': {
+      id: '/connect/facebook'
+      path: '/connect/facebook'
+      fullPath: '/connect/facebook'
+      preLoaderRoute: typeof ConnectFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/instagram': {
+      id: '/connect/instagram'
+      path: '/connect/instagram'
+      fullPath: '/connect/instagram'
+      preLoaderRoute: typeof ConnectInstagramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/whatsapp': {
+      id: '/connect/whatsapp'
+      path: '/connect/whatsapp'
+      fullPath: '/connect/whatsapp'
+      preLoaderRoute: typeof ConnectWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manage/$platform': {
+      id: '/manage/$platform'
+      path: '/manage/$platform'
+      fullPath: '/manage/$platform'
+      preLoaderRoute: typeof ManagePlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders_/$id': {
+      id: '/orders_/$id'
+      path: '/orders/$id'
+      fullPath: '/orders/$id'
+      preLoaderRoute: typeof OrdersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/posts_/$id': {
+      id: '/posts_/$id'
+      path: '/posts/$id'
+      fullPath: '/posts/$id'
+      preLoaderRoute: typeof PostsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products_/$id': {
+      id: '/products_/$id'
+      path: '/products/$id'
+      fullPath: '/products/$id'
+      preLoaderRoute: typeof ProductsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChatsRoute: ChatsRoute,
+  ConnectAccountsRoute: ConnectAccountsRoute,
+  OrdersRoute: OrdersRoute,
+  PostsRoute: PostsRoute,
+  ProductsRoute: ProductsRoute,
+  SourcesRoute: SourcesRoute,
+  ChatsIdRoute: ChatsIdRoute,
+  ConnectFacebookRoute: ConnectFacebookRoute,
+  ConnectInstagramRoute: ConnectInstagramRoute,
+  ConnectWhatsappRoute: ConnectWhatsappRoute,
+  ManagePlatformRoute: ManagePlatformRoute,
+  OrdersIdRoute: OrdersIdRoute,
+  PostsIdRoute: PostsIdRoute,
+  ProductsIdRoute: ProductsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
