@@ -18,6 +18,7 @@ import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PostsRouteImport } from './routes/posts'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as ChatsIdRouteImport } from './routes/chats_.$id'
@@ -72,6 +73,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignupRoute = SignupRouteImport.update({
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/sources': typeof SourcesRoute
   '/chats/$id': typeof ChatsIdRoute
@@ -156,6 +163,7 @@ export interface FileRoutesByTo {
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/sources': typeof SourcesRoute
   '/chats/$id': typeof ChatsIdRoute
@@ -178,6 +186,7 @@ export interface FileRoutesById {
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/sources': typeof SourcesRoute
   '/chats_/$id': typeof ChatsIdRoute
@@ -201,6 +210,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/products'
     | '/reset-password'
+    | '/settings'
     | '/signup'
     | '/sources'
     | '/chats/$id'
@@ -222,6 +232,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/products'
     | '/reset-password'
+    | '/settings'
     | '/signup'
     | '/sources'
     | '/chats/$id'
@@ -243,6 +254,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/products'
     | '/reset-password'
+    | '/settings'
     | '/signup'
     | '/sources'
     | '/chats_/$id'
@@ -265,6 +277,7 @@ export interface RootRouteChildren {
   PostsRoute: typeof PostsRoute
   ProductsRoute: typeof ProductsRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  SettingsRoute: typeof SettingsRoute
   SignupRoute: typeof SignupRoute
   SourcesRoute: typeof SourcesRoute
   ChatsIdRoute: typeof ChatsIdRoute
@@ -340,6 +353,13 @@ declare module '@tanstack/react-router' {
       path: '/reset-password'
       fullPath: '/reset-password'
       preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/signup': {
@@ -425,6 +445,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostsRoute: PostsRoute,
   ProductsRoute: ProductsRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  SettingsRoute: SettingsRoute,
   SignupRoute: SignupRoute,
   SourcesRoute: SourcesRoute,
   ChatsIdRoute: ChatsIdRoute,
