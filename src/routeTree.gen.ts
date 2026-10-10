@@ -18,6 +18,7 @@ import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PostsRouteImport } from './routes/posts'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ReviewRouteImport } from './routes/review'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SourcesRouteImport } from './routes/sources'
@@ -73,6 +74,11 @@ const ProductsRoute = ProductsRouteImport.update({
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewRoute = ReviewRouteImport.update({
+  id: '/review',
+  path: '/review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/review': typeof ReviewRoute
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/sources': typeof SourcesRoute
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/review': typeof ReviewRoute
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/sources': typeof SourcesRoute
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/posts': typeof PostsRoute
   '/products': typeof ProductsRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/review': typeof ReviewRoute
   '/settings': typeof SettingsRoute
   '/signup': typeof SignupRoute
   '/sources': typeof SourcesRoute
@@ -210,6 +219,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/products'
     | '/reset-password'
+    | '/review'
     | '/settings'
     | '/signup'
     | '/sources'
@@ -232,6 +242,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/products'
     | '/reset-password'
+    | '/review'
     | '/settings'
     | '/signup'
     | '/sources'
@@ -254,6 +265,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/products'
     | '/reset-password'
+    | '/review'
     | '/settings'
     | '/signup'
     | '/sources'
@@ -277,6 +289,7 @@ export interface RootRouteChildren {
   PostsRoute: typeof PostsRoute
   ProductsRoute: typeof ProductsRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  ReviewRoute: typeof ReviewRoute
   SettingsRoute: typeof SettingsRoute
   SignupRoute: typeof SignupRoute
   SourcesRoute: typeof SourcesRoute
@@ -353,6 +366,13 @@ declare module '@tanstack/react-router' {
       path: '/reset-password'
       fullPath: '/reset-password'
       preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/review': {
+      id: '/review'
+      path: '/review'
+      fullPath: '/review'
+      preLoaderRoute: typeof ReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -445,6 +465,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostsRoute: PostsRoute,
   ProductsRoute: ProductsRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  ReviewRoute: ReviewRoute,
   SettingsRoute: SettingsRoute,
   SignupRoute: SignupRoute,
   SourcesRoute: SourcesRoute,
