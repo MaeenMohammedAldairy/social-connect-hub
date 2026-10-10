@@ -16,6 +16,9 @@ import {
   Settings,
   Share2,
 } from "lucide-react";
+import { PageHeader } from "@/components/page-header";
+import { useAccount } from "@/components/account-provider";
+import { canManagePlatform, connectionPaths } from "@/lib/platform-access";
 import { Button } from "@/components/ui/button";
 import { AppNav } from "@/components/app-nav";
 import { MenaFlowMark } from "@/components/menaflow-brand";
@@ -60,44 +63,16 @@ const navigation = [
 ];
 
 function Index() {
+  const { user, connections } = useAccount();
   return (
     <main className="dashboard-shell" dir="rtl">
-      <header className="dashboard-header">
-        <div className="account-profile">
-          <span className="profile-mark">
-            <MenaFlowMark />
-          </span>
-          <div>
-            <p>أحمد محمد أحمد</p>
-            <span>مدير الحساب</span>
-          </div>
-          <ChevronDown className="account-chevron" />
-        </div>
-        <div className="brand-wordmark" dir="ltr">
-          <MenaFlowMark />
-          <span>MenaFlow</span>
-        </div>
-        <Button
-          variant="dashboardIcon"
-          size="icon"
-          className="notification-button"
-          aria-label="الإشعارات، 3 إشعارات جديدة"
-        >
-          <Bell />
-          <span className="notification-count">3</span>
-        </Button>
-      </header>
-
+      <PageHeader />
       <section className="welcome-section" aria-labelledby="welcome-title">
         <div className="welcome-copy">
-          <h1 id="welcome-title">
-            مرحباً بك في <bdi>MenaFlow</bdi>
-          </h1>
-          <p>
-            منصتك الذكية لإدارة جميع حساباتك الاجتماعية
-            <br />
-            بأدوات متطورة وموظف خدمة عملاء يعمل <bdi>24/7</bdi>
-          </p>
+          <span className="eyebrow">مساحة عملك الاجتماعية</span>
+          <h1 id="welcome-title">مرحباً بك في <bdi>MenaFlow</bdi></h1>
+          <p>حساباتك الاجتماعية، محتواك ومحادثاتك.
+            <br />كل ما تحتاجه في مكان واحد.</p>
           <Button asChild variant="dashboard" className="connect-button">
             <Link to="/connect-accounts">
               <LinkIcon />
@@ -120,101 +95,23 @@ function Index() {
         </div>
       </section>
 
-      <section className="stats-section" aria-label="ملخص الحساب">
-        {stats.map(({ label, value, growth, icon: Icon, tone, to }) => (
-          <Link to={to} className="stat-item transition hover:shadow-md" key={label}>
-            <span className={`stat-icon stat-${tone}`}>
-              <Icon />
-            </span>
-            <h2>{label}</h2>
-            <strong>{value}</strong>
-            <span className="stat-growth" dir="ltr">
-              <ArrowUp />
-              {growth}
-            </span>
-          </Link>
-        ))}
+      <section className="quick-links" aria-label="أقسام مساحة العمل">
+        {stats.map(({ label, icon: Icon, tone, to }) => <Link to={to} className="quick-link" key={label}><span className={`stat-icon stat-${tone}`}><Icon /></span><h2>{label}</h2><ChevronLeft /></Link>)}
       </section>
-
       <section className="platforms-section" aria-labelledby="platforms-title">
         <h2 id="platforms-title" className="section-title">
-          منصاتك المتصلة
+          حسابات التواصل
         </h2>
         <div className="platform-grid">
-          {platforms.map(({ platform, label }) => (
-            <Link
-              to="/manage/$platform"
-              params={{ platform }}
-              className="platform-item platform-tile-link"
-              key={platform}
-              aria-label={`إدارة ${label}`}
-            >
-              <SocialIcon platform={platform} />
-              <h3>{label}</h3>
-              <span className="platform-add platform-tile-add">
-                <Plus />
-              </span>
-              <span>إدارة الحساب</span>
-            </Link>
+          {platforms.map(({ platform, label }) => canManagePlatform(platform, connections) ? (
+            <Link to="/manage/$platform" params={{ platform }} className="platform-item platform-tile-link" key={platform} aria-label={`إدارة ${label}`}><SocialIcon platform={platform} /><h3>{label}</h3><span className="connection-status">متصل</span><span>إدارة الحساب</span></Link>
+          ) : (
+            <Link to={connectionPaths[platform]} className="platform-item platform-tile-link" key={platform} aria-label={`ربط ${label}`}><SocialIcon platform={platform} /><h3>{label}</h3><span className="connection-status disconnected">غير مرتبط</span><span>ربط الحساب <Plus className="inline size-3" /></span></Link>
           ))}
         </div>
       </section>
 
-      <section className="activities-section" aria-labelledby="activities-title">
-        <div className="section-heading">
-          <h2 id="activities-title" className="section-title">
-            <FileText />
-            أحدث الأنشطة
-          </h2>
-          <Button variant="ghost" className="view-all">
-            عرض الكل
-            <ChevronLeft />
-          </Button>
-        </div>
-        <div className="activity-list">
-          <div className="activity-row">
-            <SocialIcon platform="instagram" />
-            <div>
-              <p>
-                تم نشر منشور جديد على <bdi>Instagram</bdi>
-              </p>
-              <span>منذ 5 دقائق</span>
-            </div>
-            <ChevronLeft />
-          </div>
-          <div className="activity-row">
-            <span className="activity-icon activity-blue">
-              <MessageSquareMore />
-            </span>
-            <div>
-              <p>رسالة جديدة من عميل</p>
-              <span>منذ 12 دقيقة</span>
-            </div>
-            <ChevronLeft />
-          </div>
-          <div className="activity-row">
-            <span className="activity-icon activity-amber">
-              <CalendarDays />
-            </span>
-            <div>
-              <p>
-                تم تأكيد طلب رقم <bdi>#1024</bdi>
-              </p>
-              <span>منذ 25 دقيقة</span>
-            </div>
-            <ChevronLeft />
-          </div>
-          <div className="activity-row">
-            <SocialIcon platform="whatsapp" />
-            <div>
-              <p>تم استلام منتج جديد من واتساب</p>
-              <span>منذ ساعة</span>
-            </div>
-            <ChevronLeft />
-          </div>
-        </div>
-      </section>
-
+      <section className="home-workflow"><div><span className="eyebrow">من المصدر إلى المنشور</span><h2>محتواك جاهز للمراجعة</h2><p>راجع التفاصيل والصور قبل اعتماد أي منشور.</p><Button asChild variant="outline"><Link to="/review"><FileText />مراجعة المحتوى <ChevronLeft /></Link></Button></div><div className="home-workflow-links"><Link to="/sources"><Share2 />مصادر المحتوى <ChevronLeft /></Link><Link to="/onboarding"><House />اكتشف MenaFlow <ChevronLeft /></Link><Link to={user ? '/settings' : '/signup'}><Settings />{user ? 'إعدادات الحساب' : 'إنشاء حساب جديد'}<ChevronLeft /></Link></div></section>
       <AppNav active="الرئيسية" />
     </main>
   );
