@@ -1,0 +1,7 @@
+- [ ] Preserve all source pages and assets.
+- [ ] Replace phone-like frames with real responsive layouts.
+- [ ] Gate platform management on verified per-user connections.
+- [ ] Add working settings, onboarding, sign-in and signup pages.
+- [ ] Add editable extracted-content review and safe approval flow.
+- [ ] Verify requested flows and record external blockers.
+- [ ] Live platform connection/extraction/publishing: blocked on provider setup.

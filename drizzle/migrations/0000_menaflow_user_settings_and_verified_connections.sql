@@ -1,0 +1,17 @@
+CREATE TABLE public.user_settings (user_id uuid PRIMARY KEY, display_name text NOT NULL DEFAULT '', notifications boolean NOT NULL DEFAULT true, auto_publish boolean NOT NULL DEFAULT false, updated_at timestamptz NOT NULL DEFAULT now());
+GRANT SELECT, INSERT, UPDATE ON public.user_settings TO authenticated;
+GRANT ALL ON public.user_settings TO service_role;
+ALTER TABLE public.user_settings ENABLE ROW LEVEL SECURITY;
+CREATE POLICY settings_select ON public.user_settings FOR SELECT TO authenticated USING (auth.uid() = user_id);
+CREATE POLICY settings_insert ON public.user_settings FOR INSERT TO authenticated WITH CHECK (auth.uid() = user_id);
+CREATE POLICY settings_update ON public.user_settings FOR UPDATE TO authenticated USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
+CREATE TABLE public.platform_connections (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), user_id uuid NOT NULL, platform text NOT NULL CHECK (platform IN ('whatsapp','facebook','instagram')), account_name text NOT NULL, provider_account_id text NOT NULL, verified_at timestamptz, revoked_at timestamptz, UNIQUE(user_id, platform));
+GRANT SELECT ON public.platform_connections TO authenticated;
+GRANT ALL ON public.platform_connections TO service_role;
+ALTER TABLE public.platform_connections ENABLE ROW LEVEL SECURITY;
+CREATE POLICY connections_select ON public.platform_connections FOR SELECT TO authenticated USING (auth.uid() = user_id);
+CREATE TABLE public.content_reviews (id uuid PRIMARY KEY DEFAULT gen_random_uuid(), user_id uuid NOT NULL, title text NOT NULL, description text NOT NULL DEFAULT '', price numeric NOT NULL DEFAULT 0, currency text NOT NULL DEFAULT 'SAR', category text NOT NULL DEFAULT '', platforms text[] NOT NULL DEFAULT '{}', status text NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','approved')), updated_at timestamptz NOT NULL DEFAULT now());
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.content_reviews TO authenticated;
+GRANT ALL ON public.content_reviews TO service_role;
+ALTER TABLE public.content_reviews ENABLE ROW LEVEL SECURITY;
+CREATE POLICY reviews_owner ON public.content_reviews FOR ALL TO authenticated USING (auth.uid() = user_id) WITH CHECK (auth.uid() = user_id);
