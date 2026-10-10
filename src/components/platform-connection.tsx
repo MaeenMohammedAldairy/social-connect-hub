@@ -4,6 +4,7 @@ import { Check, ChevronLeft, CircleCheck, Copy, Link as LinkIcon, ShieldCheck } 
 import { Button } from "@/components/ui/button";
 import { MenaFlowMark } from "@/components/menaflow-brand";
 import { SocialIcon, type SocialPlatform } from "@/components/social-icon";
+import { useAccount } from '@/components/account-provider';
 import instagramPhoneAsset from "@/assets/instagram-phone.jpg.asset.json";
 const instagramPhone = instagramPhoneAsset.url;
 import facebookPhoneAsset from "@/assets/facebook-phone.jpg.asset.json";
@@ -38,6 +39,7 @@ const platformDetails = {
 };
 
 export function PlatformConnection({ platform }: { platform: SocialPlatform }) {
+  const { user, connectionError } = useAccount();
   const { label, image, benefits } = platformDetails[platform];
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
   const [showConnectionNotice, setShowConnectionNotice] = useState(false);
@@ -86,19 +88,20 @@ export function PlatformConnection({ platform }: { platform: SocialPlatform }) {
           ))}
         </ul>
       </section>
-      <Button
+      {!user ? <Button asChild variant="dashboard" className="platform-continue-button"><Link to="/auth">سجل الدخول لربط حسابك</Link></Button> : <Button
         variant="dashboard"
         className="platform-continue-button"
         onClick={() => setShowConnectionNotice(true)}
       >
         <SocialIcon platform={platform} />
         <span>متابعة عبر {label}</span>
-      </Button>
+      </Button>}
       {showConnectionNotice && (
         <p role="status" className="platform-action-notice">
-          الربط الفعلي مع {label} غير مفعّل بعد.
+          يلزم إعداد {platform === 'whatsapp' ? 'خدمة واتساب للأعمال' : 'تطبيق Meta للأعمال'} قبل تفعيل الربط مع {label}. لم يتم ربط حسابك بعد.
         </p>
       )}
+      {connectionError && <p role="alert" className="platform-action-notice">{connectionError}</p>}
       <div className="platform-or">
         <span>أو</span>
       </div>

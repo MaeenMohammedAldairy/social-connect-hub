@@ -6,6 +6,9 @@ import {
 import { SocialIcon, type SocialPlatform } from "@/components/social-icon";
 import { AppNav } from "@/components/app-nav";
 import { chats, posts } from "@/lib/mock-data";
+import { useAccount } from '@/components/account-provider';
+import { canManagePlatform } from '@/lib/platform-access';
+import { PlatformConnection } from '@/components/platform-connection';
 
 const data = {
   facebook: {
@@ -60,6 +63,9 @@ const card = "rounded-2xl border bg-card p-4 shadow-sm";
 
 function Manage() {
   const { platform } = Route.useLoaderData();
+  const { connections, loading } = useAccount();
+  if (loading) return <main className="settings-shell" role="status">جارٍ التحقق من اتصال الحساب…</main>;
+  if (!canManagePlatform(platform, connections)) return <PlatformConnection platform={platform} />;
   const d = data[platform];
   const tint = `platform-tint-${platform}`;
   return (
