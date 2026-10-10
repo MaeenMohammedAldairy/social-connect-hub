@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791673785732,
+      "tag": "0000_menaflow_user_settings_and_verified_connections",
+      "breakpoints": true
+    }
+  ]
 }

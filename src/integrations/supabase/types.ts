@@ -14,7 +14,99 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      content_reviews: {
+        Row: {
+          category: string
+          currency: string
+          description: string
+          id: string
+          platforms: string[]
+          price: number
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          currency?: string
+          description?: string
+          id?: string
+          platforms?: string[]
+          price?: number
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          currency?: string
+          description?: string
+          id?: string
+          platforms?: string[]
+          price?: number
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      platform_connections: {
+        Row: {
+          account_name: string
+          id: string
+          platform: string
+          provider_account_id: string
+          revoked_at: string | null
+          user_id: string
+          verified_at: string | null
+        }
+        Insert: {
+          account_name: string
+          id?: string
+          platform: string
+          provider_account_id: string
+          revoked_at?: string | null
+          user_id: string
+          verified_at?: string | null
+        }
+        Update: {
+          account_name?: string
+          id?: string
+          platform?: string
+          provider_account_id?: string
+          revoked_at?: string | null
+          user_id?: string
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
+      user_settings: {
+        Row: {
+          auto_publish: boolean
+          display_name: string
+          notifications: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          auto_publish?: boolean
+          display_name?: string
+          notifications?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          auto_publish?: boolean
+          display_name?: string
+          notifications?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
